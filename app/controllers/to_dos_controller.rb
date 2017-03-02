@@ -1,5 +1,5 @@
 class ToDosController < ApplicationController
-  before_action :set_to_do, only: [ :edit, :update, :destroy]
+  # before_action :set_to_do, only: [ :edit, :update, :destroy]
 
   # GET /to_dos
   # GET /to_dos.json
@@ -30,9 +30,11 @@ class ToDosController < ApplicationController
       if @to_do.save
         format.html { redirect_to @to_do, notice: 'To do was successfully created.' }
         format.json { render :show, status: :created, location: @to_do }
+        format.js { render :create, status: :created, location: @to_do }
       else
         format.html { render :new }
         format.json { render json: @to_do.errors, status: :unprocessable_entity }
+        format.js { render :show, status: :created, location: @to_do }
       end
     end
   end

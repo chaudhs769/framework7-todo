@@ -16,7 +16,7 @@
   <div data-page="form" class="page">
     <div class="page-content">
       <div class="list-block">
-        <%= form_for @to_do do %>
+        <%= form_for @to_do, remote: true do |f| %>
           <ul>
             <!-- Text inputs -->
             <li>
@@ -25,7 +25,7 @@
                 <div class="item-inner">
                   <div class="item-title label">Name</div>
                   <div class="item-input">
-                    <input type="text" placeholder="Your name">
+                    <%= f.text_field :title, placeholder: "Title" %>
                   </div>
                 </div>
               </div>
@@ -115,7 +115,7 @@
                 <div class="item-inner">
                   <div class="item-title label">Textarea</div>
                   <div class="item-input">
-                    <textarea class="resizable"></textarea>
+                    <%= f.text_area :description, class: "resizable" %>
                   </div>
                 </div>
               </div>
@@ -124,12 +124,12 @@
           <div class="content-block">
             <div class="row">
               <div class="col-50">
-                <a href="#" class="button button-big button-fill color-red back link">Cancel</a>
+                <%= f.submit :submit, class: 'button button-big button-fill color-green' %>
               </div>
               <div class="col-50">
-                <a href="#" class="button button-big button-fill color-green" id="submitToDoForm">Submit</a>
+                <a href="#" class="button button-big button-fill color-red back link">Cancel</a>
               </div>
-            </div> 
+            </div>
           </div>
         <%end%>
       </div>
